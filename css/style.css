@@ -1,0 +1,43 @@
+
+.daohanglan {
+    display: flex;                   /* 使用flexbox布局 */
+    align-items: center;             /* 垂直居中对齐子元素 */
+    justify-content: flex-start;     /* 子元素从左侧开始排列 */
+    /* background-image: url("https://i2.3conline.com/images/piclib/201203/22/batch/1/130539/1332349654033obqessjgay.jpg"); */
+    background-image: url("https://assets.msn.com/weathermapdata/1/static/background/v2.0/jpg/rain_2.jpg"); /* 背景图 */
+    background-size: cover;          /* 背景图覆盖整个容器 */
+    background-position: center;     /* 背景图居中 */
+    background-repeat: no-repeat;    /* 背景图不重复 */
+    padding: 20px;                   /* 内边距，增加容器的舒适度 */
+    border-radius: 10px;             /* 圆角边框，增加柔和感 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 微妙的阴影效果 */
+    color: #fff;                     /* 默认文字颜色为白色，适合背景图 */
+    font-family: 'Arial', sans-serif; /* 字体选择 */
+    margin-left: 2%;
+      margin-right: 2%;
+}
+
+.daohanglan a, .daohanglan h1, .daohanglan label {
+    margin: 0 15px;                  /* 每个元素之间的水平间距 */
+}
+  
+  #saologo {
+    margin-right: 15px; /* 为图片和其他元素之间增加间距 */
+    width: 30%;
+  }
+  
+
+
+
+#tabs-1, #tabs-2, #tabs-3, #tabs-4 {
+    
+  padding-left: 2% ;
+  padding-right: 2%;
+  }
+  
+
+
+  #tabs {
+      margin-left: 2%;
+      margin-right: 2%;
+  }
