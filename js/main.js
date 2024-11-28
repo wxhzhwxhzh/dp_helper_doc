@@ -21,10 +21,10 @@ function loadMarkdown(filePath, elementId) {
 }
 
 // 加载高阶用法
-loadMarkdown('/markdown2/高阶用法.md', 'gaojie');
+loadMarkdown('./高阶用法.md', 'gaojie');
 
 // 加载基本用法
-loadMarkdown('/markdown/基本用法.md', 'jiben');
+loadMarkdown('./基本用法.md', 'jiben');
 
 // 加载
-loadMarkdown('/markdown3/下载安装.md', 'anzhuang');
+loadMarkdown('./下载安装.md', 'anzhuang');
