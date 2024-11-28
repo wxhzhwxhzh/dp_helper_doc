@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知名的美国网站</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            color: #555;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f1f1f1;
+        }
+
+        tr:hover td {
+            background-color: #f0f0f0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1a8e44;
+        }
+
+        /* 添加分页按钮样式 */
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            background-color: #45a049;
+        }
+
+        .pagination a.active {
+            background-color: #45a049;
+            cursor: not-allowed;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>下载专区</h2>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Drissionpage 4.0旧文档</td><td><a href="https://drissionpage.cn/DP40Docs/" target="_blank">https://drissionpage.cn/DP40Docs/</a></td></tr>
+            <tr><td>2</td><td>humanMouse.py</td><td><a href="https://github.com/wxhzhwxhzh/123pan/blob/main/hunmanMouse.py" target="_blank">点我下载</a></td></tr>
+            <tr><td>3</td><td>绿色版谷歌浏览器</td><td><a href="https://download-chromium.appspot.com/" target="_blank">https://download-chromium.appspot.com/</a></td></tr>
+            <tr><td>4</td><td>格式化工具</td><td><a href="https://spidertools.cn/#/formatJSON" target="_blank">https://spidertools.cn/</a></td></tr>
+            <tr><td>5</td><td>GT-Standard-Mono-VF-Beta-V1</td><td><a href="https://wxhzhwxhzh.github.io/teach/GT-Standard-Mono-VF-Beta-V1.ttf" target="_blank">点我下载</a></td></tr>
+            <tr><td>6</td><td>Cookie Manager浏览器插件</td><td><a href="https://www.crxsoso.com/webstore/detail/okckmdcaaieknndlpbpjjnfmbakdjnbe" target="_blank">https://www.wikipedia.org</a></td></tr>
+            <tr><td>7</td><td>汇文明朝字体</td><td><a href="https://github.com/wxhzhwxhzh/huiwenmincho-improved" target="_blank">https://github.com/wxhzhwxhzh/huiwenmincho-improved</a></td></tr>
+            <tr><td>8</td><td>银河录像局</td><td><a href="https://nf.video/" target="_blank">https://nf.video/</a></td></tr>
+            <tr><td>9</td><td>CDP谷歌文档</td><td><a href="https://chromedevtools.github.io/devtools-protocol/1-3/Network/" target="_blank">https://chromedevtools.github.io/devtools-protocol/1-3/Network/</a></td></tr>
+            <tr><td>10</td><td>K哥爬虫</td><td><a href="https://www.kgtools.cn/" target="_blank">https://www.kgtools.cn/</a></td></tr>
+            <tr><td>11</td><td>AichatOS</td><td><a href="https://x.cat.caichatosb.com/" target="_blank">https://x.cat.caichatosb.com/</a></td></tr>
+            <tr><td>12</td><td>Microsoft</td><td><a href="https://www.microsoft.com" target="_blank">https://www.microsoft.com</a></td></tr>
+            <tr><td>13</td><td>骚神网</td><td><a href="https://wxhzhwxhzh.github.io/saossion_code_helper_online/" target="_blank">https://wxhzhwxhzh.github.io/saossion_code_helper_online/</a></td></tr>
+            <tr><td>14</td><td>现状JS教程</td><td><a href="https://zh.javascript.info/" target="_blank">https://zh.javascript.info/</a></td></tr>
+            <tr><td>15</td><td>爬虫练习场</td><td><a href="https://scrape.center/" target="_blank">https://scrape.center/</a></td></tr>
+        </tbody>
+    </table>
+
+    <!-- 分页按钮（分页控件） -->
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        // 定义数据和每页显示的行数
+        const rowsPerPage = 10;
+        const rows = document.querySelectorAll("#data-table tbody tr");
+        const totalRows = rows.length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        let currentPage = 1;
+
+        // 函数：显示当前页的数据
+        function showPage(page) {
+            // 确保页码合法
+            if (page < 1 || page > totalPages) return;
+
+            currentPage = page;
+            // 计算显示的数据范围
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+
+            // 隐藏所有行
+            rows.forEach((row, index) => {
+                if (index >= start && index < end) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            // 更新分页按钮的显示状态
+            updatePagination();
+        }
+
+        // 函数：更新分页按钮
+        function updatePagination() {
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            // 上一页按钮
+            const prevButton = document.createElement("a");
+            prevButton.href = "#";
+            prevButton.innerText = "«";
+            prevButton.onclick = () => showPage(currentPage - 1);
+            if (currentPage === 1) prevButton.classList.add("active");
+            pagination.appendChild(prevButton);
+
+            // 页码按钮
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement("a");
+                pageButton.href = "#";
+                pageButton.innerText = i;
+                pageButton.onclick = () => showPage(i);
+                if (i === currentPage) pageButton.classList.add("active");
+                pagination.appendChild(pageButton);
+            }
+
+            // 下一页按钮
+            const nextButton = document.createElement("a");
+            nextButton.href = "#";
+            nextButton.innerText = "»";
+            nextButton.onclick = () => showPage(currentPage + 1);
+            if (currentPage === totalPages) nextButton.classList.add("active");
+            pagination.appendChild(nextButton);
+        }
+
+        // 初始化：显示第一页并更新分页按钮
+        showPage(currentPage);
+    </script>
+
+</body>
+</html>
