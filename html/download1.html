@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>知名的美国网站</title>
+    <title>下载专区</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -114,7 +115,7 @@
             <tr><td>9</td><td>CDP谷歌文档</td><td><a href="https://chromedevtools.github.io/devtools-protocol/1-3/Network/" target="_blank">https://chromedevtools.github.io/devtools-protocol/1-3/Network/</a></td></tr>
             <tr><td>10</td><td>K哥爬虫</td><td><a href="https://www.kgtools.cn/" target="_blank">https://www.kgtools.cn/</a></td></tr>
             <tr><td>11</td><td>AichatOS</td><td><a href="https://x.cat.caichatosb.com/" target="_blank">https://x.cat.caichatosb.com/</a></td></tr>
-            <tr><td>12</td><td>Microsoft</td><td><a href="https://www.microsoft.com" target="_blank">https://www.microsoft.com</a></td></tr>
+            <tr><td>12</td><td>Vscode</td><td><a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></td></tr>
             <tr><td>13</td><td>骚神网</td><td><a href="https://wxhzhwxhzh.github.io/saossion_code_helper_online/" target="_blank">https://wxhzhwxhzh.github.io/saossion_code_helper_online/</a></td></tr>
             <tr><td>14</td><td>现状JS教程</td><td><a href="https://zh.javascript.info/" target="_blank">https://zh.javascript.info/</a></td></tr>
             <tr><td>15</td><td>爬虫练习场</td><td><a href="https://scrape.center/" target="_blank">https://scrape.center/</a></td></tr>
@@ -124,12 +125,40 @@
 
     <!-- 分页按钮（分页控件） -->
     <div class="pagination" id="pagination"></div>
-
     <script>
+        // jQuery 版本 向表格里添加数据
+        function addRowToTable(name, url) {
+            let $tbody = $("table tbody");
+            let serialNumber = $tbody.children("tr").length + 1;  // 获取当前表格的行数，作为新行的序号
+            
+            let $newRow = $("<tr>");
+            
+            let $serialCell = $("<td>").text(serialNumber);
+            $newRow.append($serialCell);
+            
+            let $nameCell = $("<td>").text(name);
+            $newRow.append($nameCell);
+            
+            let $addressCell = $("<td>");
+            let $link = $("<a>").attr("href", url).attr("target", "_blank").text(url);
+            $addressCell.append($link);
+            $newRow.append($addressCell);
+            
+            $tbody.append($newRow);
+        }
+    
+        // 示例调用：向表格添加新的一行
+        addRowToTable("廖雪峰", "https://liaoxuefeng.com/?src=redirect");
+        addRowToTable("Git", "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/Git-2.47.1-64-bit.exe");
+    </script>
+
+<script>
+    // 当文档加载完成后执行 给表格分页
+    $(document).ready(function () {
         // 定义数据和每页显示的行数
         const rowsPerPage = 10;
-        const rows = document.querySelectorAll("#data-table tbody tr");
-        const totalRows = rows.length;
+        const $rows = $("#data-table tbody tr");
+        const totalRows = $rows.length;
         const totalPages = Math.ceil(totalRows / rowsPerPage);
 
         let currentPage = 1;
@@ -144,12 +173,12 @@
             const start = (currentPage - 1) * rowsPerPage;
             const end = start + rowsPerPage;
 
-            // 隐藏所有行
-            rows.forEach((row, index) => {
+            // 隐藏所有行，并显示当前页的数据
+            $rows.each(function (index) {
                 if (index >= start && index < end) {
-                    row.style.display = "";
+                    $(this).show();
                 } else {
-                    row.style.display = "none";
+                    $(this).hide();
                 }
             });
 
@@ -159,39 +188,40 @@
 
         // 函数：更新分页按钮
         function updatePagination() {
-            const pagination = document.getElementById("pagination");
-            pagination.innerHTML = "";
+            const $pagination = $("#pagination");
+            $pagination.empty();  // 清空现有分页内容
 
             // 上一页按钮
-            const prevButton = document.createElement("a");
-            prevButton.href = "#";
-            prevButton.innerText = "«";
-            prevButton.onclick = () => showPage(currentPage - 1);
-            if (currentPage === 1) prevButton.classList.add("active");
-            pagination.appendChild(prevButton);
+            const $prevButton = $("<a>").attr("href", "#").text("«").click(function () {
+                showPage(currentPage - 1);
+            });
+            if (currentPage === 1) $prevButton.addClass("active");
+            $pagination.append($prevButton);
 
             // 页码按钮
             for (let i = 1; i <= totalPages; i++) {
-                const pageButton = document.createElement("a");
-                pageButton.href = "#";
-                pageButton.innerText = i;
-                pageButton.onclick = () => showPage(i);
-                if (i === currentPage) pageButton.classList.add("active");
-                pagination.appendChild(pageButton);
+                const $pageButton = $("<a>").attr("href", "#").text(i).click(function () {
+                    showPage(i);
+                });
+                if (i === currentPage) $pageButton.addClass("active");
+                $pagination.append($pageButton);
             }
 
             // 下一页按钮
-            const nextButton = document.createElement("a");
-            nextButton.href = "#";
-            nextButton.innerText = "»";
-            nextButton.onclick = () => showPage(currentPage + 1);
-            if (currentPage === totalPages) nextButton.classList.add("active");
-            pagination.appendChild(nextButton);
+            const $nextButton = $("<a>").attr("href", "#").text("»").click(function () {
+                showPage(currentPage + 1);
+            });
+            if (currentPage === totalPages) $nextButton.addClass("active");
+            $pagination.append($nextButton);
         }
 
         // 初始化：显示第一页并更新分页按钮
         showPage(currentPage);
-    </script>
+    });
+</script>
+
+
+
 
 </body>
 </html>

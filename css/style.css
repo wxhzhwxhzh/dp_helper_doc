@@ -4,7 +4,8 @@
     align-items: center;             /* 垂直居中对齐子元素 */
     justify-content: flex-start;     /* 子元素从左侧开始排列 */
     /* background-image: url("https://i2.3conline.com/images/piclib/201203/22/batch/1/130539/1332349654033obqessjgay.jpg"); */
-    background-image: url("https://assets.msn.com/weathermapdata/1/static/background/v2.0/jpg/rain_2.jpg"); /* 背景图 */
+    /* background-image: url("https://assets.msn.com/weathermapdata/1/static/background/v2.0/jpg/rain_2.jpg");  */
+    background-image: url("../img/daohanglan5.png");
     background-size: cover;          /* 背景图覆盖整个容器 */
     background-position: center;     /* 背景图居中 */
     background-repeat: no-repeat;    /* 背景图不重复 */

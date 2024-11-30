@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI搜索询问</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <style>
+        body {
+            background-color: rgba(241, 241, 236, 0.075);
+        }
+
+        #iframeContainer {
+            height: 95vh;
+            /* 设置容器高度为浏览器可视窗口高度的80% */
+            width: 100%;
+            top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px;
+            border-radius: 8px;
+
+        }
+    </style>
+    <style>
+        /* 为整个容器设置一个背景色和内边距 */
+        #menu {
+            display: flex;
+            /* 使用 flexbox 排列子元素 */
+            flex-direction: row;
+            /* 垂直排列 */
+            padding: 10px;
+            border-radius: 1px;
+            /* 圆角 */
+            background-color: #f1f1f1;
+            /* 鼠标悬浮时的背景色 */
+            margin-left: 5px;
+            margin-right: 5px;
+    
+        }
+    
+    
+        /* 设置每个链接的基本样式 */
+        #menu a {
+            color: #175b6c;
+            /* 链接文本颜色 */
+            text-decoration: none;
+            /* 去除下划线 */
+            padding: 10px;
+            margin: 1px 0;
+            /* 上下间距 */
+            font-size: 16px;            
+            border-radius: 5px;
+            /* 圆角效果 */
+            transition: background-color 0.3s, transform 0.3s;
+            /* 平滑过渡效果 */
+        }
+    
+        /* 当鼠标悬浮时，改变背景色并添加放大效果 */
+        #menu a:hover {
+            background-color: #d1d7db;
+            /* 悬浮时背景颜色 */
+    
+            text-decoration: underline;
+            /* 加上下划线 */
+    
+    
+        }
+    
+      
+    </style>
+</head>
+
+<body>
+    <div id="menu">
+        <a href="#" id="link1">DP4.0官网</a>
+        <a href="#" id="link2">spider tools</a>
+        <a href="#" id="link3">curl converter</a>
+    </div>
+
+    <div id="iframeContainer">
+
+        <iframe src="http://drissionpage.cn/" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        function changeIframeSrc(src) {
+            $('#iframeContainer iframe').attr('src', src);
+        }
+
+        $('#link1').click(function () {
+            changeIframeSrc('https://drissionpage.cn/DP40Docs/');
+        });
+        $('#link2').click(function () {
+            changeIframeSrc('https://spidertools.cn/#/formatJSON')
+        });
+        $('#link3').click(function () {
+            changeIframeSrc('https://curlconverter.com/');            
+            
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
